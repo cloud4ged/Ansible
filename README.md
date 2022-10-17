@@ -63,6 +63,8 @@ ansible -m ping App     # To ping the servers listed only in App group
 ```python
 ansible -m shell -a "apt update" all –become   		# --become is used to run the command as sudo user and module shell to run shell commands
 ```
+command to run Ansible Playbook
+
 ```python
 ansible-playbook SSHkeyPush.yaml --private-key=~/ansible/key.pem    	#This command can be used to run a playbook using private key authorization>
 ```
