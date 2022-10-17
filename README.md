@@ -36,3 +36,22 @@ ansible_ssh_private_key_file=~/ansible/key.pem
 Playbook to Push the SSH key generated in the master server
 
 [SSHkeypush.yml](playbooks/SSHkeypush.yml)
+
+
+```
+ansible -m ping all
+````
+````
+ansible -m shell -a "apt update" all –become   		# --become is used to run the command as sudo user and module shell to run shell commands
+````
+```
+ansible-playbook SSHkeyPush.yaml --private-key=~/ansible/key.pem    	#This command can be used to run a playbook using private key authorization>
+```
+
+git commands
+Intial
+```git
+Git init -b main  ## to initiate a repository in current directory in main branch
+Git add . ## to add all the files to queue
+Git commit -m “<message you want to enter for commit>”
+```
