@@ -33,6 +33,34 @@ app2 ansible_host=ip-172-31-33-53.ap-south-1.compute.internal
 ansible_ssh_private_key_file=~/ansible/key.pem
 ```
 
+OR For Grouping the servers
+```python
+[Web_PROD]
+web1 ansible_host=ip-172-31-34-141.ap-south-1.compute.internal
+web2 ansible_host=ip-172-31-47-223.ap-south-1.compute.internal
+
+[Web_DEV]
+DEV_Web1 ansible_host=ip-172-31-40-201.ap-south-1.compute.internal
+
+[App_PROD]
+app1 ansible_host=ip-172-31-38-250.ap-south-1.compute.internal
+app2 ansible_host=ip-172-31-33-53.ap-south-1.compute.internal
+
+[App_DEV]
+DEV_APP1 ansible_host=ip-172-31-47-51.ap-south-1.compute.internal
+
+[DEV:children]
+Web_DEV
+App_DEV
+
+[PROD:children]
+Web_PROD
+App_PROD
+
+[all:vars]
+ansible_ssh_private_key_file=~/ansible/key.pem
+```
+
 Playbook to Push the SSH key generated in the master server
 
 [SSHkeypush.yml](playbooks/SSHkeypush.yml)
